@@ -34,13 +34,13 @@ public class StudentServiceImpl implements StudentService {
   @Override
   public Student findStudent(Long id) throws StudentNotFoundException {
     return studentRepository.findById(id)
-        .orElseThrow(StudentNotFoundException::new);
+        .orElseThrow(() -> new StudentNotFoundException(id));
   }
 
   @Override
   public Student findStudent(String email) throws StudentNotFoundException {
     return studentRepository.findByEmail(email)
-        .orElseThrow(StudentNotFoundException::new);
+        .orElseThrow(() -> new StudentNotFoundException(email));
   }
 
   private Integer calculateAge(LocalDate dateOfBirth) {

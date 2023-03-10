@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: ${DATASOURCE_URL:jdbc:postgresql://localhost:5432/arcone}
+    url: ${DATASOURCE_URL:jdbc:postgresql://localhost:5432/learning_management_system}
     username: ${DATASOURCE_USERNAME:postgres}
     password: ${DATASOURCE_PASSWORD:postgres}
   jpa:

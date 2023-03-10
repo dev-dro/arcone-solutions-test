@@ -16,4 +16,6 @@ public interface CourseService {
   void updateCourse(Long id, Course course) throws CourseNotFoundException;
 
   void deleteCourse(Long id);
+
+  boolean isCourseFinished(Long id) throws CourseNotFoundException;
 }

@@ -4,6 +4,7 @@ import com.devdro.backend.exeption.CourseNotFoundException;
 import com.devdro.backend.exeption.ExistingCourseException;
 import com.devdro.backend.model.Course;
 import com.devdro.backend.repository.CourseRepository;
+import java.time.LocalDate;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -21,7 +22,7 @@ public class CourseServiceImpl implements CourseService {
 
   @Override
   public Course findCourse(Long id) throws CourseNotFoundException {
-    return courseRepository.findById(id).orElseThrow(CourseNotFoundException::new);
+    return courseRepository.findById(id).orElseThrow(() -> new CourseNotFoundException(id));
   }
 
   @Override
@@ -48,5 +49,11 @@ public class CourseServiceImpl implements CourseService {
   @Override
   public void deleteCourse(Long id) {
     courseRepository.deleteById(id);
+  }
+
+  @Override
+  public boolean isCourseFinished(Long id) throws CourseNotFoundException {
+    Course course = findCourse(id);
+    return course.getEndDate().isBefore(LocalDate.now());
   }
 }

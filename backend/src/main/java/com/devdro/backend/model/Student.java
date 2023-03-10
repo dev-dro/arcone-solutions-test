@@ -1,6 +1,7 @@
 package com.devdro.backend.model;
 
 import java.time.LocalDate;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -8,6 +9,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -45,4 +47,7 @@ public class Student {
 
   @Column(name = "phone_number", nullable = false)
   private String phoneNumber;
+
+  @OneToMany(mappedBy = "student")
+  private List<EnrolledCourse> enrolledCourses;
 }
