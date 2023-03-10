@@ -16,5 +16,5 @@ public class CourseDto {
   private String name;
   private LocalDate startDate;
   private LocalDate endDate;
-  private Integer duration;
+  private Double duration;
 }

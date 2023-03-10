@@ -32,5 +32,5 @@ public class Course {
   private LocalDate endDate;
 
   @Column(name = "duration", nullable = false)
-  private Integer duration;
+  private Double duration;
 }

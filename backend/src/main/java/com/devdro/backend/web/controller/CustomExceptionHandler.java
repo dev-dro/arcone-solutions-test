@@ -1,9 +1,7 @@
 package com.devdro.backend.web.controller;
 
 import com.devdro.backend.exeption.BusinessRuleException;
-import com.devdro.backend.exeption.ExistingCourseException;
-import com.devdro.backend.exeption.ExistingEmailException;
-import com.devdro.backend.exeption.MinimumAgeException;
+import com.devdro.backend.exeption.EntityNotFoundException;
 import com.devdro.backend.web.dto.ExceptionDto;
 import java.util.stream.Collectors;
 import org.springframework.http.HttpStatus;
@@ -22,9 +20,15 @@ public class CustomExceptionHandler {
     return new ExceptionDto(e.getAllErrors().stream().map(ObjectError::getDefaultMessage).collect(Collectors.toList()));
   }
 
-  @ExceptionHandler({ExistingEmailException.class, ExistingCourseException.class, MinimumAgeException.class})
+  @ExceptionHandler(BusinessRuleException.class)
   @ResponseStatus(HttpStatus.BAD_REQUEST)
   public ExceptionDto handleBusinessRulesException(BusinessRuleException e) {
+    return new ExceptionDto(e.getMessage());
+  }
+
+  @ExceptionHandler(EntityNotFoundException.class)
+  @ResponseStatus(HttpStatus.NOT_FOUND)
+  public ExceptionDto handleEntityNotFoundException(EntityNotFoundException e) {
     return new ExceptionDto(e.getMessage());
   }
 }

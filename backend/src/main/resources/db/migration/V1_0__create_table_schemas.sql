@@ -16,7 +16,7 @@ create table if not exists course
     name       varchar not null unique,
     start_date date    not null,
     end_date   date    not null,
-    duration   integer not null
+    duration numeric not null
 );
 
 create table if not exists enrolled_course

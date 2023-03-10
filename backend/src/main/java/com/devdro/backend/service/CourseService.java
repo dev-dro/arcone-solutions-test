@@ -13,7 +13,7 @@ public interface CourseService {
 
   void createCourse(Course course) throws ExistingCourseException;
 
-  void updateCourse(Long id, Course course) throws CourseNotFoundException;
+  void updateCourse(Long id, Course course) throws CourseNotFoundException, ExistingCourseException;
 
   void deleteCourse(Long id);
 

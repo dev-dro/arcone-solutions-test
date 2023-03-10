@@ -38,6 +38,13 @@ public class CourseController {
         .collect(Collectors.toList());
   }
 
+  @GetMapping("/{id}")
+  @ResponseStatus(HttpStatus.OK)
+  public CourseDto findCourse(@PathVariable Long id) throws CourseNotFoundException {
+    Course course = courseService.findCourse(id);
+    return CourseDtoMapper.INSTANCE.courseToCourseDto(course);
+  }
+
   @PostMapping
   @ResponseStatus(HttpStatus.CREATED)
   public void createCourse(@RequestBody @Valid CourseCreateDto dto) throws ExistingCourseException {
@@ -47,7 +54,8 @@ public class CourseController {
 
   @PutMapping("/{id}")
   @ResponseStatus(HttpStatus.OK)
-  public void updateCourse(@PathVariable Long id, @RequestBody CourseCreateDto dto) throws CourseNotFoundException {
+  public void updateCourse(@PathVariable Long id, @RequestBody CourseCreateDto dto)
+      throws CourseNotFoundException, ExistingCourseException {
     Course course = CourseCreateDtoMapper.INSTANCE.courseCreateDtoToCourse(dto);
     courseService.updateCourse(id, course);
   }

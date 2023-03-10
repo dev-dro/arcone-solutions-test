@@ -21,5 +21,5 @@ public class CourseCreateDto {
   private LocalDate startDate;
 
   @NotNull(message = "Duration is required")
-  private Integer duration;
+  private Double duration;
 }

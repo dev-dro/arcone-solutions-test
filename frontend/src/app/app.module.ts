@@ -8,12 +8,16 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {AlertComponent} from './alert/alert.component';
+import {CourseFormComponent} from './course/course-form/course-form.component';
+import {CourseListComponent} from './course/course-list/course-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     StudentCreateComponent,
-    AlertComponent
+    AlertComponent,
+    CourseFormComponent,
+    CourseListComponent
   ],
   imports: [
     BrowserModule,

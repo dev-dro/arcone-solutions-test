@@ -1,0 +1,38 @@
+<div class="row mb-3">
+  <div class="col">
+    <h2 class="text-center">Create Course</h2>
+  </div>
+</div>
+
+<form [formGroup]="courseForm" (ngSubmit)="onSubmit()">
+  <div class="row mb-3">
+    <div class="col-md-6 form-group">
+      <label for="name">Name</label>
+      <input type="text" id="name" class="form-control" formControlName="name">
+    </div>
+    <div class="col-md-6 form-group">
+      <label for="duration">Duration (Hours)</label>
+      <input type="number" step="0.5" id="duration" class="form-control" formControlName="duration">
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-md-6 form-group">
+      <label for="startDate" class="form-label">Start Date</label>
+      <input type="date" id="startDate" class="form-control" formControlName="startDate">
+    </div>
+
+    <div class="col-md-6 form-group" *ngIf="course.id">
+      <div class="col-md-6 form-group">
+        <label for="endDate" class="form-label" readonly>End Date</label>
+        <input type="date" id="endDate" class="form-control" formControlName="endDate">
+      </div>
+    </div>
+  </div>
+
+  <div class="text-end">
+    <button type="button" class="btn btn-secondary" (click)="cancel()">Cancel</button>
+    <!--    <button type="submit" class="btn btn-primary ms-3"[disabled]="studentForm.invalid">Register</button>-->
+    <button type="submit" class="btn btn-primary ms-3">Register</button>
+  </div>
+</form>

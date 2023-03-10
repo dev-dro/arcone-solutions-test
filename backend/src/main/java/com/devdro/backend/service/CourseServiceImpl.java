@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class CourseServiceImpl implements CourseService {
 
+  public static final int MONTHS_TO_COMPLETE = 6;
   private final CourseRepository courseRepository;
 
   @Override
@@ -32,15 +33,20 @@ public class CourseServiceImpl implements CourseService {
       throw new ExistingCourseException(courseName);
     }
 
-    course.setEndDate(course.getStartDate().plusMonths(6));
+    course.setEndDate(course.getStartDate().plusMonths(MONTHS_TO_COMPLETE));
 
     courseRepository.save(course);
   }
 
   @Override
-  public void updateCourse(Long id, Course course) throws CourseNotFoundException {
+  public void updateCourse(Long id, Course course) throws CourseNotFoundException, ExistingCourseException {
     Course existingCourse = findCourse(id);
+    String courseName = course.getName();
+    if (courseRepository.existsByNameAndIdNot(courseName, id)) {
+      throw new ExistingCourseException(courseName);
+    }
     existingCourse.setName(course.getName());
+    existingCourse.setDuration(course.getDuration());
     existingCourse.setStartDate(course.getStartDate());
 
     courseRepository.save(existingCourse);

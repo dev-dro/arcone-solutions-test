@@ -33,10 +33,10 @@ export class StudentCreateComponent implements OnInit {
   }
 
   onSubmit(): void {
-    // if (this.studentForm.valid) {
-    this.alertService.clearAlerts();
-    const student: Student = this.studentForm.value;
-    this.studentService.createStudent(student).subscribe(result => console.log(result));
-    // }
+    if (this.studentForm.valid) {
+      this.alertService.clearAlerts();
+      const student: Student = this.studentForm.value;
+      this.studentService.createStudent(student).subscribe(result => console.log(result));
+    }
   }
 }
