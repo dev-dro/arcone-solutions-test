@@ -5,3 +5,7 @@ spring:
     password: ${DATASOURCE_PASSWORD:postgres}
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
+  security:
+    user:
+      password: admin
+      name: admin
