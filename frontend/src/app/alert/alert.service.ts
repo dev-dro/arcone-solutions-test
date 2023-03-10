@@ -24,4 +24,8 @@ export class AlertService {
   public clearAlerts(): void {
     this.alertClearSubject.next();
   }
+
+  success(message: string): void {
+    this.alertSubject.next(new Alert('success', message));
+  }
 }

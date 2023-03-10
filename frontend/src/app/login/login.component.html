@@ -1,0 +1,22 @@
+<div class="row mb-3">
+  <div class="col">
+    <h2 class="text-center">Login</h2>
+  </div>
+</div>
+
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <div class="row mb-3">
+    <div class="offset-md-3 col-md-6 offset-md-3 form-group">
+      <label for="name">Email</label>
+      <input type="text" id="name" class="form-control" formControlName="name">
+    </div>
+    <div class="offset-md-3 col-md-6 offset-md-3 form-group">
+      <label for="duration">Password</label>
+      <input type="password" step="0.5" id="duration" class="form-control" formControlName="duration">
+    </div>
+  </div>
+  <div class="text-center">
+    <button type="button" class="btn btn-secondary" (click)="registerNewStudent()">Register</button>
+    <button type="submit" class="btn btn-primary ms-3">Login</button>
+  </div>
+</form>

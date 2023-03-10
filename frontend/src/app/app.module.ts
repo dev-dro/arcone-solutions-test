@@ -10,6 +10,8 @@ import {HttpClientModule} from '@angular/common/http';
 import {AlertComponent} from './alert/alert.component';
 import {CourseFormComponent} from './course/course-form/course-form.component';
 import {CourseListComponent} from './course/course-list/course-list.component';
+import {LoginComponent} from './login/login.component';
+import {NavbarComponent} from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import {CourseListComponent} from './course/course-list/course-list.component';
     StudentCreateComponent,
     AlertComponent,
     CourseFormComponent,
-    CourseListComponent
+    CourseListComponent,
+    LoginComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
