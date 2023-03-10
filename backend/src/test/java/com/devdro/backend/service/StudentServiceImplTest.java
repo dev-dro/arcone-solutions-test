@@ -17,13 +17,13 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 @ExtendWith(MockitoExtension.class)
-class StudentServiceTest {
+class StudentServiceImplTest {
 
   @Mock
   StudentRepository studentRepository;
 
   @InjectMocks
-  StudentService studentService;
+  StudentServiceImpl studentService;
 
   @Test
   void givenValidStudent_themCreateTheStudent() throws Exception {

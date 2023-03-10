@@ -5,7 +5,7 @@ import static com.devdro.backend.utils.StudentUtils.getStudentDto;
 
 import com.devdro.backend.exeption.ExistingEmailException;
 import com.devdro.backend.model.Student;
-import com.devdro.backend.service.StudentService;
+import com.devdro.backend.service.StudentServiceImpl;
 import com.devdro.backend.web.dto.StudentDto;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
@@ -30,7 +30,7 @@ class StudentControllerTest {
   ObjectMapper objectMapper;
 
   @MockBean
-  StudentService studentService;
+  StudentServiceImpl studentService;
 
 
   @Test
